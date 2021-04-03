@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Set
 from datetime import datetime, timedelta
 from pprint import pformat, pprint
-from scripts.api import (
+from weechat_scripts.api import (
     Glob,
     IrcMessage,
     MessageTag,
