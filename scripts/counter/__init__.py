@@ -1,7 +1,7 @@
 from typing import Any, Dict, List, Set
 from datetime import datetime, timedelta
 from pprint import pformat, pprint
-from weechat_scripts.api import (
+from api import (
     Glob,
     IrcMessage,
     MessageTag,
@@ -89,7 +89,7 @@ class CommandTracker(Event):
 class Test(Command):
     def callback(self, data: str, buffer: str, args: str) -> int:
         prnt("", "bar")
-        return ReturnCode.OK
+        return ReturnCode.OK.value
 
 
 class Counter(Script):
@@ -100,32 +100,32 @@ class Counter(Script):
         prnt("", "shutting down")
 
 
-if __name__ == "__main__":
-    counter = Counter(
-        "Counter",
-        "myndzi",
-        "0.0.1",
-        "MIT",
-        "Counts the number of times a command is seen",
-    )
-    test_cb = counter.register_command(Test("test", "do a bar", "", "", ""))
+# def install():
+#     counter = Counter(
+#         "Counter",
+#         "myndzi",
+#         "0.0.1",
+#         "MIT",
+#         "Counts the number of times a command is seen",
+#     )
+#     test_cb = counter.register_command(Test("test", "do a bar", "", "", ""))
 
-    # irc = TwitchIrc()
+#     # irc = TwitchIrc()
 
-    # irc.on('PRIVMSG', ['#dunkorslam'], counter.count)
+#     # irc.on('PRIVMSG', ['#dunkorslam'], counter.count)
 
-    # irc_cb = irc.callback("irc_cb")
+#     # irc_cb = irc.callback("irc_cb")
 
-    commandtracker_cb = counter.register_event(
-        CommandTracker("!uguu", "!quack", "!croak", "!speen")
-    )
-    counter_shutdown = counter.shutdown
-    counter.install()
+#     commandtracker_cb = counter.register_event(
+#         CommandTracker("!uguu", "!quack", "!croak", "!speen")
+#     )
+#     counter_shutdown = counter.shutdown
+#     counter.install()
 
-    # def testing(server: str, msg: TwitchMessage) -> ReturnCode:
-    #     prnt("", f"{msg.display_name}: {msg.params[1]}")
-    #     return ReturnCode.OK
+#     # def testing(server: str, msg: TwitchMessage) -> ReturnCode:
+#     #     prnt("", f"{msg.display_name}: {msg.params[1]}")
+#     #     return ReturnCode.OK
 
-    # irc = TwitchIrc()
-    # irc.on(testing, "PRIVMSG", ["#dunkorslam", Glob("!*")])
-    # irc_cb = irc.callback("irc_cb")
+#     # irc = TwitchIrc()
+#     # irc.on(testing, "PRIVMSG", ["#dunkorslam", Glob("!*")])
+#     # irc_cb = irc.callback("irc_cb")

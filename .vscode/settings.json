@@ -5,7 +5,7 @@
     "python.linting.enabled": true,
     "python.linting.mypyEnabled": true,
     "python.analysis.extraPaths": [
-        "../",
+        "./api",
         "/opt/homebrew/lib/python3.9/site-packages/"
     ]
 }
